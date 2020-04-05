@@ -1,0 +1,33 @@
+name: blog_arthur
+description: A new Flutter application.
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.1.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^0.1.2
+  flutter_modular: ^0.5.2
+  package_info: ^0.4.0+14
+
+dev_dependencies:
+  mockito: ^4.1.1
+  mobx_codegen: ^1.0.2
+  build_runner: ^1.7.4
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+
+scripts:
+  watch: flutter pub run build_runner watch --delete-conflicting-outputs
+  clean: flutter pub run build_runner clean
+  build: flutter pub run build_runner build --delete-conflicting-outputs
