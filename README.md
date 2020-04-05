@@ -1,6 +1,9 @@
 # db-posts
 
-A new Flutter application.
+Para rodar a aplicação, é preciso digitar os comandos:
+flutter clean
+flutter pub get
+flutter run
 
 ## Getting Started
 
