@@ -3,7 +3,7 @@
 Para rodar a aplicação, é preciso digitar os comandos:
 flutter clean
 flutter pub get
-flutter run
+flutter run ou 'F5'
 
 ## Getting Started
 
