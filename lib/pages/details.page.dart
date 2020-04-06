@@ -2,13 +2,15 @@ import 'package:blog_arthur/models/comment.model.dart';
 import 'package:blog_arthur/models/post.model.dart';
 import 'package:blog_arthur/repositories/post.repository.dart';
 import 'package:blog_arthur/util/app_colors.dart';
+import 'package:blog_arthur/util/format_text.dart';
 import 'package:flutter/material.dart';
 
 class DetailsPage extends StatelessWidget {
   final Post post;
   final repository = new PostRepository();
-  List<Comment> comments;
 
+  List<Comment> comments;
+  FormatText formatText = new FormatText();
   DetailsPage({@required this.post});
 
   @override
@@ -21,7 +23,10 @@ class DetailsPage extends StatelessWidget {
             appBar: AppBar(
               centerTitle: true,
               backgroundColor: AppColors.darkBlueCustom,
-              title: Text("DB POSTS"),
+              title: Image.asset(
+                'assets/images/logo.png',
+                width: 140,
+              ),
             ),
             body: Container(
                 color: Colors.white,
@@ -41,7 +46,8 @@ class DetailsPage extends StatelessWidget {
                               Container(
                                 padding: EdgeInsets.only(bottom: 20),
                                 width: MediaQuery.of(context).size.width,
-                                child: Text(post.title,
+                                child: Text(
+                                    formatText.FirstLetterUppercase(post.title),
                                     style: TextStyle(
                                         color: Colors.black,
                                         fontWeight: FontWeight.w600,
@@ -49,7 +55,8 @@ class DetailsPage extends StatelessWidget {
                               ),
                               Container(
                                 width: MediaQuery.of(context).size.width,
-                                child: Text(post.body,
+                                child: Text(
+                                    formatText.FirstLetterUppercase(post.body),
                                     maxLines: 9999,
                                     overflow: TextOverflow.ellipsis,
                                     style: TextStyle(
@@ -137,7 +144,10 @@ class DetailsPage extends StatelessWidget {
                                                           MediaQuery.of(context)
                                                               .size
                                                               .width,
-                                                      child: Text(comment.body,
+                                                      child: Text(
+                                                          formatText
+                                                              .FirstLetterUppercase(
+                                                                  comment.body),
                                                           maxLines: 9999,
                                                           overflow: TextOverflow
                                                               .ellipsis,

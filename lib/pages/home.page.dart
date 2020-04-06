@@ -1,6 +1,8 @@
 import 'package:blog_arthur/models/post.model.dart';
+import 'package:blog_arthur/models/user.model.dart';
 import 'package:blog_arthur/repositories/post.repository.dart';
 import 'package:blog_arthur/util/app_colors.dart';
+import 'package:blog_arthur/util/format_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -12,9 +14,10 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  var repository = new PostRepository();
+  PostRepository repository = new PostRepository();
+  FormatText formatText = new FormatText();
   ScrollController _scrollController = new ScrollController();
-  var user;
+  User user;
   List<Post> posts;
 
   @override
@@ -26,7 +29,10 @@ class _HomePageState extends State<HomePage> {
             child: Scaffold(
               appBar: AppBar(
                 backgroundColor: AppColors.darkBlueCustom,
-                title: Text("DB POSTS"),
+                title: Image.asset(
+                  'assets/images/logo.png',
+                  width: 140,
+                ),
                 centerTitle: true,
               ),
               body: FutureBuilder(
@@ -50,7 +56,9 @@ class _HomePageState extends State<HomePage> {
                                   title: Container(
                                     width: MediaQuery.of(context).size.width,
                                     padding: EdgeInsets.only(bottom: 10),
-                                    child: Text(posts[i].title,
+                                    child: Text(
+                                        formatText.FirstLetterUppercase(
+                                            posts[i].title),
                                         maxLines: 1,
                                         overflow: TextOverflow.ellipsis,
                                         style: TextStyle(
@@ -62,7 +70,9 @@ class _HomePageState extends State<HomePage> {
                                       Container(
                                           width:
                                               MediaQuery.of(context).size.width,
-                                          child: Text(posts[i].body,
+                                          child: Text(
+                                              formatText.FirstLetterUppercase(
+                                                  posts[i].body),
                                               maxLines: 5,
                                               overflow: TextOverflow.ellipsis,
                                               style:
